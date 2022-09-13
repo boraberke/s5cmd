@@ -14,7 +14,7 @@ import (
 func TestListBuckets(t *testing.T) {
 	t.Parallel()
 
-	s3client, s5cmd := setup(t)
+	s3client, s5cmd := setup(t, withS3Backend("bolt"))
 
 	// alphabetically unordered list of buckets
 	bucketPrefix := s3BucketFromTestName(t)
@@ -41,7 +41,7 @@ func TestListBuckets(t *testing.T) {
 func TestListBucketsJSON(t *testing.T) {
 	t.Parallel()
 
-	s3client, s5cmd := setup(t)
+	s3client, s5cmd := setup(t, withS3Backend("bolt"))
 
 	// alphabetically unordered list of buckets
 	bucketPrefix := s3BucketFromTestName(t)

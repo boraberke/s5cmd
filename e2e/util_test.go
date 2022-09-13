@@ -98,7 +98,7 @@ func setup(t *testing.T, options ...option) (*s3.S3, func(...string) icmd.Cmd) {
 	t.Helper()
 
 	opts := &setupOpts{
-		s3backend: "bolt",
+		s3backend: "mem",
 	}
 
 	for _, option := range options {

@@ -566,7 +566,7 @@ func TestSyncS3BucketToLocalFolderSameObjectsSourceOlder(t *testing.T) {
 
 	now := time.Now()
 	timeSource := newFixedTimeSource(now)
-	s3client, s5cmd := setup(t, withTimeSource(timeSource))
+	s3client, s5cmd := setup(t, withTimeSource(timeSource), withS3Backend("bolt"))
 
 	bucket := s3BucketFromTestName(t)
 	createBucket(t, s3client, bucket)
@@ -723,7 +723,7 @@ func TestSyncS3BucketToS3BucketSameSizesSourceNewer(t *testing.T) {
 
 	now := time.Now()
 	timeSource := newFixedTimeSource(now)
-	s3client, s5cmd := setup(t, withTimeSource(timeSource))
+	s3client, s5cmd := setup(t, withTimeSource(timeSource), withS3Backend("bolt"))
 
 	bucket := s3BucketFromTestName(t)
 	destbucket := "destbucket"
@@ -1654,7 +1654,7 @@ func TestIssue435(t *testing.T) {
 
 	bucket := s3BucketFromTestName(t)
 
-	s3client, s5cmd := setup(t, withS3Backend("mem"))
+	s3client, s5cmd := setup(t)
 
 	createBucket(t, s3client, bucket)
 

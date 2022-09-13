@@ -203,7 +203,7 @@ func TestRemoveTenThousandS3Objects(t *testing.T) {
 
 	// ten thousand s3 objects are created for this test. by default, s3 backend is
 	// bolt but we need speed for this test, hence use in-memory storage.
-	s3client, s5cmd := setup(t, withS3Backend("mem"))
+	s3client, s5cmd := setup(t)
 
 	createBucket(t, s3client, bucket)
 
